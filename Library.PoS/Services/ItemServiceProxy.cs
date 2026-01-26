@@ -1,5 +1,6 @@
 ﻿using CLI.PoS.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -50,6 +51,24 @@ namespace Library.PoS.Services
         // you make a private constructor to prevent anyone from creating an instance of the class, and you create a static property that returns the single instance of the class. The first time the property is accessed, it creates the instance and returns it. Subsequent accesses to the property will return the same instance.
         private ItemServiceProxy() { 
             items = new List<Item>();
+        }
+
+        public void Add(Item item)
+        {
+            item.Id = NextKey;
+            Items.Add(item);
+        }
+
+        public int NextKey
+        {
+            get
+            {
+                if(Items.Any())
+                {
+                    return Items.Select(i => i.Id).Max() + 1;
+                }
+                return 1;
+            }
         }
 
     }
