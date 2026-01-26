@@ -24,22 +24,38 @@ namespace MyApp
                 {
                     case 1:
                         Console.WriteLine("Admin Menu");
+                        Console.WriteLine("C. Create New Menu Item");
+                        Console.WriteLine("U. Edit Menu Item");
 
-                        Console.WriteLine("Name:");
-                        var name = Console.ReadLine();
-                        Console.WriteLine("Description:");
-                        var description = Console.ReadLine();
+                        var subChoice = Console.ReadLine();
+                        if (subChoice.Equals("C", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            Console.WriteLine("Name:");
+                            var name = Console.ReadLine();
+                            Console.WriteLine("Description:");
+                            var description = Console.ReadLine();
 
-                        Console.WriteLine("Price:");
-                        var price = Console.ReadLine();
+                            Console.WriteLine("Price:");
+                            var price = Console.ReadLine();
 
-                        var item = new Item { 
-                        Name = name, Description = description, Price = decimal.Parse(price)
-                        };
+                            var item = new Item
+                            {
+                                Name = name,
+                                Description = description,
+                                Price = decimal.Parse(price)
+                            };
+                            ItemServiceProxy.Current.Add(item);
 
-                        Console.WriteLine(item);
-                        list.Add(item);
+                            Console.WriteLine(item);
+                        } else if(subChoice.Equals("U", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            //display the items in their current state
+                            ItemServiceProxy.Current.Items.ForEach(Console.WriteLine);
 
+                            //let a user choose which one to update
+
+                            //make the update
+                        }
                         break;
                     case 2:
                         Console.WriteLine("User Menu");
