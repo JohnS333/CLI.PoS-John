@@ -40,10 +40,9 @@ namespace Library.PoS.Services
                 return instance; 
             }
         }
-        private ItemServiceProxy() { }
-
-        public void AddItem(Item item)
-        {
+        private ItemServiceProxy() { 
+            items = new List<Item>();
         }
+
     }
 }

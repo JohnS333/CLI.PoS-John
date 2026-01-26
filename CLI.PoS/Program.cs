@@ -11,7 +11,6 @@ namespace MyApp
         {
             var list = ItemServiceProxy.Current.Items;
 
-            var anotherList = ItemServiceProxy.Current.Items;
             Console.WriteLine("Choose one of the following:");
             Console.WriteLine("1. Administrator");
             Console.WriteLine("2. User");
