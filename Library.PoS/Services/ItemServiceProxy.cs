@@ -49,15 +49,30 @@ namespace Library.PoS.Services
             }
         }
         // you make a private constructor to prevent anyone from creating an instance of the class, and you create a static property that returns the single instance of the class. The first time the property is accessed, it creates the instance and returns it. Subsequent accesses to the property will return the same instance.
-        private ItemServiceProxy() { 
-            items = new List<Item>();
+        private ItemServiceProxy() {
+            items = new List<Item> { 
+                new Item{ Id = 1, Name = "Something 1", Price = 1 }
+                , new Item{ Id = 2, Name = "Something 2", Price = 2 }
+                , new Item{ Id = 3, Name = "Something 3", Price = 3 } 
+            };
         }
 
-        public void Add(Item item)
+        public void AddOrUpdate(Item? item)
         {
-            item.Id = NextKey;
-            Items.Add(item);
+            if (item == null)
+            {
+                return;
+            }
+
+            if(item.Id == 0)
+            {
+                item.Id = NextKey;
+                Items.Add(item);
+            }
+
         }
+
+        
 
         public int NextKey
         {

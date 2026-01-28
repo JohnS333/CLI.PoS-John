@@ -44,17 +44,37 @@ namespace MyApp
                                 Description = description,
                                 Price = decimal.Parse(price)
                             };
-                            ItemServiceProxy.Current.Add(item);
+                            ItemServiceProxy.Current.AddOrUpdate(item);
 
                             Console.WriteLine(item);
                         } else if(subChoice.Equals("U", StringComparison.InvariantCultureIgnoreCase))
                         {
                             //display the items in their current state
-                            ItemServiceProxy.Current.Items.ForEach(Console.WriteLine);
+                            list.ForEach(Console.WriteLine);
 
                             //let a user choose which one to update
+                            var editChoice = int.Parse(Console.ReadLine() ?? "0");
+                            var itemToEdit = list.FirstOrDefault(i => i.Id == editChoice);
 
-                            //make the update
+                            if (itemToEdit != null)
+                            {
+                                //make the update
+                                Console.WriteLine("New Name:");
+                                var newName = Console.ReadLine();
+                                if (!string.IsNullOrEmpty(newName))
+                                {
+                                    itemToEdit.Name = newName;
+                                }
+                                Console.WriteLine("New Price:");
+                                var newPrice = Console.ReadLine();
+                                if (!string.IsNullOrEmpty(newPrice))
+                                {
+                                    itemToEdit.Price = decimal.Parse(newPrice);
+                                }
+
+
+                                ItemServiceProxy.Current.AddOrUpdate(itemToEdit);
+                            }
                         }
                         break;
                     case 2:

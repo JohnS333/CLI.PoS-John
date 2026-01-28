@@ -26,7 +26,7 @@ namespace CLI.PoS.Model
 
         public override string ToString()
         {
-            return $"[{Price:C}] {Name} - {Description}";
+            return $"{Id}. [{Price:C}] {Name} - {Description}";
         }
 
         public string Display => ToString() ?? string.Empty;
