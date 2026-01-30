@@ -33,6 +33,7 @@ namespace MyApp
                                 Console.WriteLine("C. Create New Menu Item");
                                 Console.WriteLine("R. List All Menu Items");
                                 Console.WriteLine("U. Edit Menu Item");
+                                Console.WriteLine("D. Delete Menu Item");
                                 Console.WriteLine("Q. Quit");
 
                                 subChoice = Console.ReadLine();
@@ -55,7 +56,8 @@ namespace MyApp
                                     ItemServiceProxy.Current.AddOrUpdate(item);
 
                                     Console.WriteLine(item);
-                                } else if (subChoice.Equals("R", StringComparison.InvariantCultureIgnoreCase))
+                                }
+                                else if (subChoice.Equals("R", StringComparison.InvariantCultureIgnoreCase))
                                 {
                                     // this whole function is one line of code, so currently no need for a separate method and to call it
                                     list.ForEach(Console.WriteLine);
@@ -92,6 +94,16 @@ namespace MyApp
 
                                         ItemServiceProxy.Current.AddOrUpdate(itemToEdit);
                                     }
+                                }
+                                else if (subChoice.Equals("D", StringComparison.InvariantCultureIgnoreCase)) {
+                                    //display the items in their current state
+                                    list.ForEach(Console.WriteLine);
+
+                                    //let a user choose which one to update
+                                    var editChoice = int.Parse(Console.ReadLine() ?? "0");
+                                    var itemToDelete = list.FirstOrDefault(i => i.Id == editChoice);
+
+                                    ItemServiceProxy.Current.Delete(itemToDelete);
                                 }
                                 break;
                             case 2:
