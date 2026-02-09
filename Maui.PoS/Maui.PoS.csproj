@@ -62,6 +62,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\Library.PoS\Library.PoS.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Views\AdminMainView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
