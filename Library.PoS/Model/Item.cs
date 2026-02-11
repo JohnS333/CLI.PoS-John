@@ -22,7 +22,15 @@ namespace CLI.PoS.Model
 
         public string? Name { get; set; }
         public string? Description { get; set; }
-        public decimal Price;
+        public decimal Price { get; set; }
+
+        public string? PriceDisplay
+        {
+            get
+            {
+                return $"{Price:C}";
+            }
+        }
 
         public override string ToString()
         {
