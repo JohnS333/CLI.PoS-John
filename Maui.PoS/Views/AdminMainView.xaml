@@ -9,11 +9,13 @@
             Text="Administrative Menu"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <CollectionView
-            ItemsSource="{Binding Items}">
-            <CollectionView.ItemTemplate>
+        <ListView
+            ItemsSource="{Binding Items}"
+            SelectedItem="{Binding SelectedItem}">
+            <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <ViewCell>
+                        <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition/>
@@ -47,10 +49,13 @@
                         </Grid>
 
                     </Grid>
+                    </ViewCell>
                 </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+
+            </ListView.ItemTemplate>
+        </ListView>
         <Button Text="Add New" Clicked="AddNewClicked"/>
+        <Button Text="Delete" Clicked="DeleteClicked"/>
         <Button Text="Go Back" Clicked="GoBackClicked"/>
     </VerticalStackLayout>
 </ContentPage>

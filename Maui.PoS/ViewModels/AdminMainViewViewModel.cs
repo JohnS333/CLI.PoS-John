@@ -22,6 +22,8 @@ namespace Maui.PoS.ViewModels
             }
         }
 
+        public Item? SelectedItem { get; set;  }
+
         public event PropertyChangedEventHandler? PropertyChanged;
             // this event comes from the INotifyPropertyChanged interface,
             // "PropertyChangedEventHandler" is a built in delegate type in .NET. it comes from the System.ComponentModel namespace
@@ -31,7 +33,11 @@ namespace Maui.PoS.ViewModels
             //1.	object? sender: The object that triggered the event (in this case, your ViewModel).
             //2.	PropertyChangedEventArgs e: An object containing the event data (specifically, the name of the property that changed).
             // "Any method that wants to be attached to this event MUST accept two inputs (parameters): one object (the sender), and one PropertyChangedEventArgs (the event data)."
-
+        public void Delete()
+        {
+            ItemServiceProxy.Current.Delete(SelectedItem);
+            Refresh();
+        }
     public void Refresh()
         {
             NotifyPropertyChanged("Items");
