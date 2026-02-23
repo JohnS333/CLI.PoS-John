@@ -30,6 +30,15 @@ namespace Library.PoS.Services
         private static ItemServiceProxy? instance;
         private static object instanceLock = new object();
 
+        public Item? GetById(int id)
+        {
+            if(id == 0)
+            {
+                return null;
+            }
+
+            return Items.FirstOrDefault(i => i.Id == id);
+        }
         public static ItemServiceProxy Current
         {
             //this guarantees that if an itemserviceproxy has been created, it will return that instance, and if it has not been created, it will create a new instance and return it. This ensures that there is only one instance of the ItemServiceProxy class throughout the application.

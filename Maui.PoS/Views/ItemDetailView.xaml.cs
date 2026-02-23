@@ -3,9 +3,11 @@ using Library.PoS.Services;
 
 namespace Maui.PoS.Views;
 
+[QueryProperty(nameof(ItemId), "itemId")]
 public partial class ItemDetailView : ContentPage
 {
-	public ItemDetailView()
+    public int ItemId { get; set; }
+    public ItemDetailView()
 	{
 		InitializeComponent();
 	}
@@ -23,8 +25,14 @@ public partial class ItemDetailView : ContentPage
 
     private void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)
     {
-        // if you re instate the binding context in the constructor, MAui will not update it because its trying to save resources.
+        if (ItemId == 0)
+        {
+            // if you re instate the binding context in the constructor, MAui will not update it because its trying to save resources.
         // Its smarter to update the binding context in the navigated to event.
         BindingContext = new Item();
+        } else
+        {
+            BindingContext = ItemServiceProxy.Current.GetById(ItemId) ?? new Item();
+        }
     }
 }
