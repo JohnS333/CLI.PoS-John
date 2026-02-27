@@ -14,16 +14,6 @@ namespace Maui.PoS.ViewModels
         // InotifyPropertyChanged is an interface. Having it on the right of this semicolon means this class implements the interface.
         // When a class implements an interface, it agrees to a contract. The interface dictates a specific set of members that MUST exist
         // INotifyPropertyChanged interface requires any class that implements it to contain an event named PropertyChanged
-        public ObservableCollection<Item> Items
-        {
-            get
-            {
-                return new ObservableCollection<Item>(ItemServiceProxy.Current.Items);
-            }
-        }
-
-        public Item? SelectedItem { get; set;  }
-
         public event PropertyChangedEventHandler? PropertyChanged;
             // this event comes from the INotifyPropertyChanged interface,
             // "PropertyChangedEventHandler" is a built in delegate type in .NET. it comes from the System.ComponentModel namespace
