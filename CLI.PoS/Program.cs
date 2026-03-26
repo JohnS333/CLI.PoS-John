@@ -1,7 +1,7 @@
 ﻿using CLI.PoS;
 using CLI.PoS.Model;
 using System;
-
+// test for rollback
 namespace MyApp
 {
     internal class Program
