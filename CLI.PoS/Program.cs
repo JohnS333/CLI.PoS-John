@@ -2,7 +2,7 @@
 using CLI.PoS.Model;
 using Library.PoS.Services;
 using System;
-
+//branch 2 commit test
 namespace MyApp
 {
     internal class Program
