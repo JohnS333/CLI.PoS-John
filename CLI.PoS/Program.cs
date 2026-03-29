@@ -9,6 +9,8 @@ namespace MyApp
     {
         static void Main(string[] args)
         {
+            // list is a copy of of the items in the service, so when we add to it, it adds to the service as well 
+            // satic access is good but it can cost a lot of ram if the service is large.
             var list = ItemServiceProxy.Current.Items;
 
             Console.WriteLine("Choose one of the following:");
