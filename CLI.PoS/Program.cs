@@ -53,8 +53,12 @@ namespace MyApp
                             list.ForEach(Console.WriteLine);
 
                             //let a user choose which one to update
+                            //if Console.ReadLine() is null, we will default to 0
                             var editChoice = int.Parse(Console.ReadLine() ?? "0");
+                            // traditionally in c++, itemToEdit is a deep copy, but C# handles dereferencing pointers automatically so its acting as a shallow copy.
+                            // itemToEdit is actually pointing to the same original memory location (definition of shallow copy). So the logic for the update method in the service is not needed (for now).
                             var itemToEdit = list.FirstOrDefault(i => i.Id == editChoice);
+                            //"Default" for itemToEdit is null, because item is a reference type 
 
                             if (itemToEdit != null)
                             {
