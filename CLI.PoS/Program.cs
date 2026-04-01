@@ -57,6 +57,7 @@ namespace MyApp
                                     Console.WriteLine(item);
                                 } else if (subChoice.Equals("R", StringComparison.InvariantCultureIgnoreCase))
                                 {
+                                    // this whole function is one line of code, so currently no need for a separate method and to call it
                                     list.ForEach(Console.WriteLine);
                                 }
                                 else if (subChoice.Equals("U", StringComparison.InvariantCultureIgnoreCase))
