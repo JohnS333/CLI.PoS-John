@@ -11,6 +11,10 @@
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+                <!-- {DataTemplate views:AdminMainView} is C# binding syntax
+        Its an expression that says, when i navigate MainPage route, it will find local:MainPage
+        and load it into the shell -->
+
     <ShellContent
         Title="Administration"
         ContentTemplate="{DataTemplate views:AdminMainView}"
