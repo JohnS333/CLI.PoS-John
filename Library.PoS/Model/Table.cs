@@ -21,6 +21,7 @@ namespace Library.PoS.Model
         public int CurrentPartySize { get; set; }
         public string? Location { get; set; }
         List<string>? MemberIds { get; set; }
+        // if there are members at the table, aka they are frequent customers, we can use this to identify them and offer them personalized service. 
         public TableState Status { get; set;  }
         public List<DateTime> StatusChanges {  get; set; }
         public bool? IsReserved { get; set;  }
