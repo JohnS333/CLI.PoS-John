@@ -64,6 +64,11 @@ namespace Library.PoS.Services
 
         private static object _instanceLock = new object();
         private static TableServiceProxy? instance;
+        // this guarantees that if a tableserviceproxy has been created, it will return that instance, and if it has not been created, it will create a new instance and return it.
+        // This ensures that there is only one instance of the TableServiceProxy class throughout the application.
+        // it needs to be static because it needs to be accessible without an instance of the class, and it needs to return the single instance of the class.
+        // static means you can access it without creating an instance of the class.
+                // This is necessary for the singleton pattern, because you need to be able to access the single instance of the class without having to create an instance first.
         public static TableServiceProxy Current {
             get
             {
